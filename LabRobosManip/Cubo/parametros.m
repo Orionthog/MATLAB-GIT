@@ -11,9 +11,12 @@ while(1)
     usrRotz = input('Rotação em torno de Z: ');
     
     %
-    DesenhaCubo(P0)
-    rotacao(usrRef, usrRotx, usrRoty, usrRotz)
-    DesenhaCubo(P0)
+    for i = 1:1:60
+        global P
+        rotacao(usrRef, i*usrRotx/60, i*usrRoty/60, i*usrRotz/60)
+        DesenhaCubo(P)
+        %clf
+    end
     
     while(1)
         usrAskAgain = input('Deseja fazer outra transformação? [S/N]\n', 's');

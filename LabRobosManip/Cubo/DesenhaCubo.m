@@ -4,7 +4,7 @@ function DesenhaCubo(P)
     
     global H
     global P
-    P0 = [H*P(:,1), H*P(:,2), H*P(:,3), H*P(:,4), H*P(:,5), H*P(:,6), H*P(:,7), H*P(:,8)]
+    P0 = [H*P(:,1), H*P(:,2), H*P(:,3), H*P(:,4), H*P(:,5), H*P(:,6), H*P(:,7), H*P(:,8)];
     P = P0;
     
     figure(1)
