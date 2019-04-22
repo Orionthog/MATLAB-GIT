@@ -19,12 +19,12 @@ L(2) = Link([   0   + theta2 ,  0   , 0 ,  1*pi/2]);
 L(3) = Link([   0   + theta3 , a2/2 , 0 ,  1*pi/2]);
 L(4) = Link([   0   + theta4 ,  0   , 0 , -1*pi/2]);
 L(5) = Link([   0   + theta5 , a3/2 , 0 , -1*pi/2]);
-%L(6) = Link([   0   + theta6 ,  0   , 0 , -1*pi/2]);
-%L(7) = Link([  pi/2 + theta7 , a4/2 , 0 ,     0  ]);
+L(6) = Link([   0   + theta6 ,  0   , 0 , -1*pi/2]);
+L(7) = Link([  pi/2 + theta7 , a4/2 , 0 ,     0  ]);
 
 kuka = SerialLink(L, 'name', 'kuka') 
 
 %%
 %Plot
-figure(1)
+figure
 kuka.plot(zeros(1, kuka.n))
