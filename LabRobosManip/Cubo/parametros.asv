@@ -18,10 +18,17 @@ while(1)
     usrRoty = input('Rotação em torno de Y: ');
     usrRotz = input('Rotação em torno de Z: ');
     %Animacao
-    for i = 1:60
-        DesenhaCubo(P0);
-        rotacao(usrRef, usrRotx/60, usrRoty/60, usrRotz/60);
-        pause(15E-3);
+    
+    for i = 0:60
+        DesenhaCubo(P0)
+        rotacao(usrRef, usrRotx/60, usrRoty/60, usrRotz/60)
+        pause(15E-3)
+    end
+    
+    for i = 0:60
+        DesenhaCubo(P0)
+        rotacao(usrRef, usrRotx/60, usrRoty/60, usrRotz/60)
+        pause(15E-3)
     end
     %Executa novamente
     while(1)
