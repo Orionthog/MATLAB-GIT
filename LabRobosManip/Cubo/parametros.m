@@ -8,15 +8,15 @@ H = eye(3);
 while(1)
     %Menu
     %Trata o referencial
-    usrRef = input('Sistema de referencia fixo no mundo (W), ou fixo no cubo (C): \n', 's');
+    usrRef = input('Sistema de referência fixo no mundo (W), ou fixo no cubo (C): \n', 's');
     while(usrRef ~= 'W' & usrRef ~= 'C')
-        fprintf('Entrada invï¿½lida\n');
-        usrRef = input('Sistema de referencia fixo no mundo (W), ou fixo no cubo (C): \n', 's');
+        fprintf('Entrada inválida\n');
+        usrRef = input('Sistema de referência fixo no mundo (W), ou fixo no cubo (C): \n', 's');
     end
     %Valores em graus
-    usrRotx = input('Rotaï¿½ï¿½o em torno de X: ');
-    usrRoty = input('Rotaï¿½ï¿½o em torno de Y: ');
-    usrRotz = input('Rotaï¿½ï¿½o em torno de Z: ');
+    usrRotx = input('Rotação em torno de X: ');
+    usrRoty = input('Rotação em torno de Y: ');
+    usrRotz = input('Rotação em torno de Z: ');
     %Animacao
     for i = 1:60
         rotacao(usrRef, usrRotx/60, usrRoty/60, usrRotz/60);
@@ -25,11 +25,11 @@ while(1)
     end
     %Executa novamente
     while(1)
-        usrAskAgain = input('Deseja fazer outra transformaï¿½ï¿½o? [S/N]\n', 's');
+        usrAskAgain = input('Deseja fazer outra transformação? [S/N]\n', 's');
         if(usrAskAgain == 'N' | usrAskAgain == 'n')
             return
         elseif(usrAskAgain ~= 'S' & usrAskAgain ~= 's')
-            fprintf('Entrada invï¿½lida\n');
+            fprintf('Entrada inválida\n');
         else
             break
         end
