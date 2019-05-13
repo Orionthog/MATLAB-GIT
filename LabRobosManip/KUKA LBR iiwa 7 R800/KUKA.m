@@ -1,6 +1,10 @@
 %%
-run('/home/igor.barbara/github/MATLAB-GIT/LabRobosManip/rvctools/startup_rvc.m')
+%Caminho no Fedora
+%run('/home/igor.barbara/github/MATLAB-GIT/LabRobosManip/rvctools/startup_rvc.m')
+%Caminho no Windows
+run('C:\Users\Igor\USP-GIT\LabRobosManip\rvctools\startup_rvc.m')
 %%
+clear
 %Parametros
 a1 = 340;
 a2 = 400;
@@ -26,5 +30,16 @@ kuka = SerialLink(L, 'name', 'kuka')
 
 %%
 %Plot
-figure
-kuka.plot(zeros(1, kuka.n))
+figure(1)
+clf
+kuka.plot(zeros(1, kuka.n), 'tilesize', 128 )
+
+axis equal;
+grid on;
+xlabel('X','FontSize',18);
+ylabel('Y','FontSize',18);
+zlabel('Z','FontSize',18);
+
+
+%kuka.getpos
+
