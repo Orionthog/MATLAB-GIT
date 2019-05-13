@@ -1,8 +1,8 @@
 %%
 %Caminho no Fedora
-%run('/home/igor.barbara/github/MATLAB-GIT/LabRobosManip/rvctools/startup_rvc.m')
+run('/home/igor.barbara/github/USP-GIT/LabRobosManip/rvctools/startup_rvc.m')
 %Caminho no Windows
-run('C:\Users\Igor\USP-GIT\LabRobosManip\rvctools\startup_rvc.m')
+%run('C:\Users\Igor\USP-GIT\LabRobosManip\rvctools\startup_rvc.m')
 %%
 clear
 %Parametros

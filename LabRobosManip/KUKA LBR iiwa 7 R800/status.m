@@ -2,6 +2,7 @@ t = 0:1E-2:10;
 t = t';
 Td = 10;
 
+%Atribuicao dos valores de junta tal qual
 %joint = c0 + c1*t + c2*t.^2 + c3*t.^3 + c4*t.^4 + c5*t.^5;
 theta_s = 0;
 theta_g = 90;
@@ -66,6 +67,7 @@ vel = polyder(pos);
 acc = polyder(vel);
 joint7 = [polyval( pos , t ) , polyval( vel , t ) , polyval( acc , t )];
 
+%Grafico de Posicao
 figure(2)
 clf
 plot(joint1(:,1))
@@ -79,6 +81,7 @@ plot(joint7(:,1))
 title('Posicao de Junta')
 legend('Junta 1','Junta 2','Junta 3','Junta 4','Junta 5','Junta 6','Junta 7','Location', 'northeast')
 
+%Grafico de Velocidade
 figure(3)
 clf
 plot(joint1(:,2))
@@ -92,6 +95,7 @@ plot(joint7(:,2))
 title('Velocidade de Junta')
 legend('Junta 1','Junta 2','Junta 3','Junta 4','Junta 5','Junta 6','Junta 7','Location', 'northeast')
 
+%Grafico de Aceleracao
 figure(4)
 clf
 plot(joint1(:,3))
