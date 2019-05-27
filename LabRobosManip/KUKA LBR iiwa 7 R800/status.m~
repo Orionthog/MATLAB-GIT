@@ -1,6 +1,7 @@
-t = 0:1E-1:10;
+t = 0:2E-1:10;
 t = t';
 Td = 10;
+global joint1 joint2 joint3 joint4 joint5 joint6 joint7
 
 %Atribuicao dos valores de junta tal qual
 %joint = c0 + c1*t + c2*t.^2 + c3*t.^3 + c4*t.^4 + c5*t.^5;
@@ -18,7 +19,7 @@ vel = polyder(pos);
 acc = polyder(vel);
 joint1 = [polyval( pos , t ) , polyval( vel , t ) , polyval( acc , t )];
 joint2 = [polyval( pos , t ) , polyval( vel , t ) , polyval( acc , t )];
-%%
+
 theta_g = 180;
 c0 = theta_s;
 c1 = 0;
@@ -68,21 +69,20 @@ vel = polyder(pos);
 acc = polyder(vel);
 joint7 = [polyval( pos , t ) , polyval( vel , t ) , polyval( acc , t )];
 
-batman = [joint1 , joint2 , joint3 , joint4 , joint5 , joint6 , joint7];
-t = t/1E-1
-;
+ArmPos = [joint1 , joint2 , joint3 , joint4 , joint5 , joint6 , joint7];
+
 %Grafico de Posicao
 figure(2)
 clf
-plot(joint1(:,1))
+plot(t, joint1(:,1))
 hold on
 grid on
-plot(joint2(:,1))
-plot(joint3(:,1))
-plot(joint4(:,1))
-plot(joint5(:,1))
-plot(joint6(:,1))
-plot(joint7(:,1))
+plot(t, joint2(:,1))
+plot(t, joint3(:,1))
+plot(t, joint4(:,1))
+plot(t, joint5(:,1))
+plot(t, joint6(:,1))
+plot(t, joint7(:,1))
 xlabel('Tempo [s]');
 ylabel('Posicao [°]');
 title('Posicao de Junta')
@@ -91,15 +91,15 @@ legend('Junta 1','Junta 2','Junta 3','Junta 4','Junta 5','Junta 6','Junta 7','Lo
 %Grafico de Velocidade
 figure(3)
 clf
-plot(joint1(:,2))
+plot(t, joint1(:,2))
 hold on
 grid on
-plot(joint2(:,2))
-plot(joint3(:,2))
-plot(joint4(:,2))
-plot(joint5(:,2))
-plot(joint6(:,2))
-plot(joint7(:,2))
+plot(t, joint2(:,2))
+plot(t, joint3(:,2))
+plot(t, joint4(:,2))
+plot(t, joint5(:,2))
+plot(t, joint6(:,2))
+plot(t, joint7(:,2))
 xlabel('Tempo [s]');
 ylabel('Velocidade [°/s]');
 title('Velocidade de Junta')
@@ -108,15 +108,15 @@ legend('Junta 1','Junta 2','Junta 3','Junta 4','Junta 5','Junta 6','Junta 7','Lo
 %Grafico de Aceleracao
 figure(4)
 clf
-plot(joint1(:,3))
+plot(t, joint1(:,3))
 hold on
 grid on
-plot(joint2(:,3))
-plot(joint3(:,3))
-plot(joint4(:,3))
-plot(joint5(:,3))
-plot(joint6(:,3))
-plot(joint7(:,3))
+plot(t, joint2(:,3))
+plot(t, joint3(:,3))
+plot(t, joint4(:,3))
+plot(t, joint5(:,3))
+plot(t, joint6(:,3))
+plot(t, joint7(:,3))
 xlabel('Tempo [s]');
 ylabel('Aceleracao [°/s²]');
 title('Aceleracao de Junta')

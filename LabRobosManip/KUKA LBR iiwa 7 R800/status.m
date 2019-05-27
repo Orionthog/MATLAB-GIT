@@ -1,6 +1,7 @@
-t = 0:1E-1:10;
+t = 0:2E-1:10;
 t = t';
 Td = 10;
+global joint1 joint2 joint3 joint4 joint5 joint6 joint7
 
 %Atribuicao dos valores de junta tal qual
 %joint = c0 + c1*t + c2*t.^2 + c3*t.^3 + c4*t.^4 + c5*t.^5;
@@ -18,7 +19,7 @@ vel = polyder(pos);
 acc = polyder(vel);
 joint1 = [polyval( pos , t ) , polyval( vel , t ) , polyval( acc , t )];
 joint2 = [polyval( pos , t ) , polyval( vel , t ) , polyval( acc , t )];
-%%
+
 theta_g = 180;
 c0 = theta_s;
 c1 = 0;
@@ -68,7 +69,10 @@ vel = polyder(pos);
 acc = polyder(vel);
 joint7 = [polyval( pos , t ) , polyval( vel , t ) , polyval( acc , t )];
 
-batman = [joint1 , joint2 , joint3 , joint4 , joint5 , joint6 , joint7];
+%Matriz Nx7 que representa posição, velocidade e aceleração do braço
+armPos = [joint1(:,1) , joint2(:,1) , joint3(:,1) , joint4(:,1) , joint5(:,1) , joint6(:,1) , joint7(:,1)];
+armVel = [joint1(:,2) , joint2(:,2) , joint3(:,2) , joint4(:,2) , joint5(:,2) , joint6(:,2) , joint7(:,2)];
+armAcc = [joint1(:,3) , joint2(:,3) , joint3(:,3) , joint4(:,3) , joint5(:,3) , joint6(:,3) , joint7(:,3)];
 
 %Grafico de Posicao
 figure(2)
