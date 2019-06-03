@@ -1,12 +1,15 @@
 %%
 %Caminho no Fedora
-%run('/home/igor.barbara/github/USP-GIT/LabRobosManip/rvctools/startup_rvc.m')
+run('/home/igor.barbara/github/USP-GIT/LabRobosManip/rvctools/startup_rvc.m')
 %Caminho no Windows
-run('C:\Users\Igor\USP-GIT\LabRobosManip\rvctools\startup_rvc.m')
+%run('C:\Users\Igor\USP-GIT\LabRobosManip\rvctools\startup_rvc.m')
 %%
 clear
 
-run('C:\Users\Igor\USP-GIT\LabRobosManip\KUKA LBR iiwa 7 R800\status.m')
+%Caminho no Windows
+%run('C:\Users\Igor\USP-GIT\LabRobosManip\KUKA LBR iiwa 7 R800\status.m')
+%Caminho no Fedora
+run('/home/igor.barbara/github/USP-GIT/LabRobosManip/KUKA LBR iiwa 7 R800/status.m')
 
 global joint1 joint2 joint3 joint4 joint5 joint6 joint7
 
@@ -16,6 +19,8 @@ instantRot = zeros(3, (length(t)-1)*3);
 instantRPY = zeros(3, (length(t)-1)*3);
 batman = [];
 robin = [];
+theta = zeros(7,1);
+
 %Parametros do kuka
 a1 = 340;
 a2 = 400;
@@ -51,29 +56,27 @@ zlabel('Z','FontSize',18);
 
 %Animacao
 for i = 1:length(joint1)-1
-    %figure(1)
     clf
+    %theta = [joint1(length(joint1) - i)*pi/180 , joint2(length(joint2) - i)*pi/180 , joint3(length(joint3) - i)*pi/180 , joint4(length(joint4) - i)*pi/180 , joint5(length(joint5) - i)*pi/180 , joint6(length(joint6) - i)*pi/180 , joint7(length(joint7) - i)*pi/180];
     kuka.plot([joint1(length(joint1) - i)*pi/180 , joint2(length(joint2) - i)*pi/180 , joint3(length(joint3) - i)*pi/180 , joint4(length(joint4) - i)*pi/180 , joint5(length(joint5) - i)*pi/180 , joint6(length(joint6) - i)*pi/180 , joint7(length(joint7) - i)*pi/180], 'tilesize' , 128 , 'delay' , 1E-3)
     cinemDir = horzcat( cinemDir , kuka.fkine([joint1(length(joint1) - i)*pi/180 , joint2(length(joint2) - i)*pi/180 , joint3(length(joint3) - i)*pi/180 , joint4(length(joint4) - i)*pi/180 , joint5(length(joint5) - i)*pi/180 , joint6(length(joint6) - i)*pi/180 , joint7(length(joint7) - i)*pi/180]));
-    %pause(1E-3)
 end
-%%
+
 %Cinematica Direta
 for i = 1:length(cinemDir)
     instantPos(:,i) = cinemDir(i).t;
 end
 instantRot(:,:) = [cinemDir.n , cinemDir.o , cinemDir.a];
 
-figure(5)
-clf
+figure(1)
 axis equal;
 hold on;
 grid on;
 xlabel('X','FontSize',18);
 ylabel('Y','FontSize',18);
 
-plot(instantR)
-%%
+plot3( instantPos(1,:), instantPos(2,:) , instantPos(3,:))
+
 
 %Roll Pitch Yaw
 for i = 1:3:length(instantRot)
@@ -85,7 +88,7 @@ for i = 1:3:length(instantRot)
 end
 
 %Plot Roll Pitch Yaw
-figure()
+figure(6)
 clf
 axis equal;
 hold on;
@@ -93,7 +96,7 @@ grid on;
 xlabel('X','FontSize',18);
 ylabel('Y','FontSize',18);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%PERGUNTAR SOBRE " plote a curva de orientacao do efetuador em funcao do tempo. "
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%PLOTAR RPY e checar o que mostrar Xe, Ye e Ze com cores distintas
+%significa para a cinemática direta
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
