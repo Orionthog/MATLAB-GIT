@@ -6,11 +6,14 @@ run('C:\Users\Igor\USP-GIT\LabRobosManip\rvctools\startup_rvc.m')
 %%
 clear
 
+run('C:\Users\Igor\USP-GIT\LabRobosManip\KUKA LBR iiwa 7 R800\status.m')
+
 global joint1 joint2 joint3 joint4 joint5 joint6 joint7
+
 cinemDir = [];
-instantPos = zeros(3, 50);
-instantRot = zeros(3, 150);
-instantRPY = zeros(3, 150);
+instantPos = zeros(3, (length(t)-1)*1);
+instantRot = zeros(3, (length(t)-1)*3);
+instantRPY = zeros(3, (length(t)-1)*3);
 batman = [];
 robin = [];
 %Parametros do kuka
@@ -36,7 +39,6 @@ L(7) = Link([  pi/2 + theta7 , a4/2 , 0 ,     0  ]);
 
 kuka = SerialLink(L, 'name', 'kuka');
 
-
 %Plot
 figure(1)
 clf
@@ -55,12 +57,23 @@ for i = 1:length(joint1)-1
     cinemDir = horzcat( cinemDir , kuka.fkine([joint1(length(joint1) - i)*pi/180 , joint2(length(joint2) - i)*pi/180 , joint3(length(joint3) - i)*pi/180 , joint4(length(joint4) - i)*pi/180 , joint5(length(joint5) - i)*pi/180 , joint6(length(joint6) - i)*pi/180 , joint7(length(joint7) - i)*pi/180]));
     %pause(1E-3)
 end
-
+%%
 %Cinematica Direta
 for i = 1:length(cinemDir)
     instantPos(:,i) = cinemDir(i).t;
 end
 instantRot(:,:) = [cinemDir.n , cinemDir.o , cinemDir.a];
+
+figure(5)
+clf
+axis equal;
+hold on;
+grid on;
+xlabel('X','FontSize',18);
+ylabel('Y','FontSize',18);
+
+plot(instantR)
+%%
 
 %Roll Pitch Yaw
 for i = 1:3:length(instantRot)
@@ -72,7 +85,7 @@ for i = 1:3:length(instantRot)
 end
 
 %Plot Roll Pitch Yaw
-figure(5)
+figure()
 clf
 axis equal;
 hold on;
